@@ -1,0 +1,8 @@
+[
+    { "id": 1, "name": "Plant A", "species": "Cactus", "sunlight": "Low", "water": "Weekly" },
+    { "id": 2, "name": "Plant B", "species": "Fern", "sunlight": "Medium", "water": "Biweekly" },
+    { "id": 3, "name": "Plant C", "species": "Succulent", "sunlight": "High", "water": "Monthly" },
+    { "id": 4, "name": "Plant D", "species": "Orchid", "sunlight": "Low", "water": "Weekly" },
+    { "id": 5, "name": "Plant E", "species": "Bamboo", "sunlight": "Medium", "water": "Daily" }
+  ]
+  
