@@ -1,8 +1,0 @@
-[build]
-  publish = "public"           # Directory to serve your portfolio
-  functions = "functions"      # Directory for serverless functions
-
-[[redirects]]
-  from = "/api"                # Redirect /api to the serverless function
-  to = "/.netlify/functions/api"
-  status = 200
