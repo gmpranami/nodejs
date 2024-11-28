@@ -1,53 +1,31 @@
-const http = require('http');
+const express = require('express');
 const fs = require('fs');
 const path = require('path');
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/api' && req.method === 'GET') {
-    // Serve the plant data
-    const filePath = path.join(__dirname, 'data.json');
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
-      } else {
-        res.writeHead(200, {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*', // CORS support for frontend
-        });
-        res.end(data);
-      }
-    });
-  } else {
-    // Serve your portfolio files
-    const filePath = path.join(
-      __dirname,
-      'portfolio',
-      req.url === '/' ? 'index.html' : req.url
-    );
-    const ext = path.extname(filePath);
-    const contentType =
-      ext === '.html'
-        ? 'text/html'
-        : ext === '.css'
-        ? 'text/css'
-        : ext === '.js'
-        ? 'application/javascript'
-        : 'text/plain';
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-    fs.readFile(filePath, (err, content) => {
-      if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('File Not Found');
-      } else {
-        res.writeHead(200, { 'Content-Type': contentType });
-        res.end(content);
-      }
-    });
-  }
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// API endpoint to serve plant data
+app.get('/api', (req, res) => {
+  const filePath = path.join(__dirname, 'data.json');
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.setHeader('Access-Control-Allow-Origin', '*'); // Enable CORS
+      res.json(JSON.parse(data));
+    }
+  });
 });
 
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// Catch-all route to serve the portfolio's index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
