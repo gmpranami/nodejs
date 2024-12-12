@@ -41,9 +41,11 @@ body::before {
 header.navbar {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;  
     align-items: center;
-    padding: 10px 20px;
-    background-color: rgba(26, 26, 64, 0.9);
+    padding: 5px 20px;
+    justify-content: space-between;
+    background-color: rgba(3, 3, 12, 0.9);
     color: white;
 }
 
@@ -82,6 +84,7 @@ header.navbar {
 @media (max-width: 768px) {
     header.navbar {
         grid-template-columns: 1fr; /* Switch to a single-column layout */
+        grid-template-rows: auto;   /* Ensure rows are defined */
         text-align: center; /* Center the content */
     }
 
@@ -116,19 +119,21 @@ header.navbar {
 main .main {
     display: grid;
     justify-items: center;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(233, 236, 239, 0.6);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 40px 0;
-    height: 40vh;
+    height: 30vh;
+    grid-template-rows: auto; /* Added grid-template-rows */
 }
 
 .main-text {
     color: #451d09;
-    padding: 20px;
+    padding: 1px;
     text-align: center;
 }
 
 .main-text h1 {
-    margin: 10px;
+    margin: 1px;
     font-size: 50px;
 }
 
@@ -145,52 +150,65 @@ main .main {
 /* About Section */
 section#about {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #333;
-    padding: 20px;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;  /* Two columns */
+    grid-template-rows: auto auto;   /* Added grid-template-rows */
+    grid-gap: 30px;                  /* More space between items */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(233, 236, 239, 0.9));
+    color: #264653;                  /* Deep Blue Text */
+    padding: 40px 60px;              /* More padding for breathing space */
+    align-items: start;              /* Align content at the top */
+    border-radius: 15px;             /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);  /* Subtle shadow */
 }
 
 #about img {
-    height: 250px;
-    object-fit: cover;
-    margin-right: 10px;
+    width: 100%;                    /* Full width for better fit */
+    height: auto;                   /* Maintain aspect ratio */
+    border-radius: 10px;            /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);  /* Image shadow */
 }
 
-.about-part {
-    display: inline-block;
-    margin: 20px;
+.about-part h3 {
+    font-size: 2rem;
+    color: #021f1b;                 /* Teal Highlight */
+    margin-bottom: 15px;
+    text-align: left;
 }
 
-/* Media Query for Responsive Layout */
+.about-part p {
+    font-size: 1.1rem;
+    line-height: 1.8;               /* Better readability */
+    text-align: justify;
+}
+
+/* Mobile View Adjustment */
 @media (max-width: 768px) {
     section#about {
-        grid-template-columns: 1fr; /* Stack the image and content in a single column */
-        text-align: center; /* Optional: center-align content */
+        grid-template-columns: 1fr; /* Stack items vertically */
+        grid-template-rows: auto auto;  /* Ensure rows are defined */
+        text-align: center;          /* Center-align text */
     }
 
     #about img {
-        margin: 0 auto 20px; /* Center the image and add margin below it */
-        width: 80%; /* Optional: make the image smaller on mobile */
-        height: auto;
+        width: 80%;                 /* Smaller image on mobile */
+        margin: 0 auto 20px;        /* Center with margin */
     }
 
     .about-part {
-        margin: 0 0 20px 0; /* Add margin below text content */
+        width: 100%;
+        margin: 0 auto;
     }
 }
 
 /* Journey Section */
 section.journey {
-    padding: 50px 100px;
+    padding: 30px 30px;
     background-color: rgba(233, 236, 239, 0.7);
 }
 
 .journey .heading {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     font-size: 2rem;
     color: #451d09;
 }
@@ -198,13 +216,14 @@ section.journey {
 .journey-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;  /* Added grid-template-rows */
     grid-gap: 20px;
 }
 
 .journey-section .subheading {
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 /* Timeline Styles */
@@ -224,8 +243,8 @@ section.journey {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-left: 60px; /* Creates more space between the dot/line and the content */
-    width: calc(100% - 80px); /* Prevents overflow and ensures it fits within the layout */
+    margin-left: 40px; /* Creates more space between the dot/line and the content */
+    width: calc(100% - 60px); /* Prevents overflow and ensures it fits within the layout */
 }
 
 /* Vertical Line (Timeline) */
@@ -254,7 +273,7 @@ section.journey {
 
 /* Projects Section */
 section#projects {
-    padding: 40px;
+    padding: 20px;
     background-color: rgba(255, 255, 255, 0.6);
 }
 
@@ -268,13 +287,14 @@ section#projects {
 .project-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: auto;  /* Added grid-template-rows */
     grid-gap: 20px; /* Space between grid items */
 }
 
 .project-item {
     background-color: rgba(255, 255, 255, 0.8);
     color: #333;
-    text-align: center;
+    text-align: justify;
     padding: 20px;
     border-radius: 10px;
     border: 2px solid #e4f0f0;
@@ -297,18 +317,20 @@ section#projects {
 @media (max-width: 768px) {
     .project-grid {
         grid-template-columns: repeat(2, 1fr); /* Show 2 columns on medium screens */
+        grid-template-rows: auto;  /* Added grid-template-rows */
     }
 }
 
 @media (max-width: 480px) {
     .project-grid {
         grid-template-columns: 1fr; /* Show 1 column on small screens */
+        grid-template-rows: auto;  /* Added grid-template-rows */
     }
 }
 
 /* Blog Section */
 section#blog {
-    padding: 40px;
+    padding: 10px;
     background-color: rgba(220, 202, 210, 0.5);
 }
 
@@ -321,6 +343,7 @@ section#blog {
 .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;  /* Added grid-template-rows */
     grid-gap: 20px;
 }
 
@@ -334,6 +357,7 @@ section#blog {
     border: 2px solid #e4f0f0;
     transition: box-shadow 0.3s ease-in-out;
     margin-bottom: 20px;
+    text-align: justify;
 }
 
 .blogitems:hover {
@@ -357,23 +381,29 @@ section#blog {
 /* Footer Section */
 footer#footer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: rgba(26, 26, 64, 0.9);
+    grid-template-columns: 1fr auto; /* Auto width for right-aligned content */
+    grid-template-rows: auto; /* Added grid-template-rows */
+    padding: 5px 20px;
+    justify-content: space-between;
+    background-color: rgba(3, 3, 12, 0.8);
     color: white;
-    padding: 20px;
+    text-align: left;
+    border: 2px solid rgba(169, 43, 137, 0.228);
 }
 
 .footer-left {
-    justify-self: start;
+    justify-self: start; /* Left-align the footer-left content */
 }
 
 .footer-right {
-    justify-self: end;
-    text-align: right;
+    justify-self: end; /* Right-align the footer-right content */
+    display: flex;
+    align-items: center; /* Vertically center the icons */
+    gap: 230px; /* Add space between icons */
+    padding: 10px;
 }
 
 .footer-links a {
-    margin-left: 20px;
     text-decoration: none;
     color: white;
 }
@@ -382,29 +412,32 @@ footer#footer {
     width: 32px;
     height: 32px;
     vertical-align: middle;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
 }
 
 .footer-links a:hover .social-icon {
     filter: brightness(1.2);
+    transform: scale(1.1);
 }
 
-/* Responsive design */
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
     footer#footer {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack content vertically */
+        grid-template-rows: auto;  /* Added grid-template-rows */
         text-align: center;
     }
 
     .footer-left, .footer-right {
-        justify-self: center;
+        justify-self: center; /* Center-align for smaller screens */
     }
 
-    .footer-links {
-        text-align: center;
+    .footer-right {
+        margin-top: 15px; /* Add spacing between sections */
     }
 
     .social-icon {
         width: 24px;
-        height: 24px;
+        height: 24px; /* Adjust icon size for smaller screens */
     }
 }
